@@ -22,8 +22,7 @@ public class CustomAdapter extends ArrayAdapter<Data> {
 //		if (convertView == null) {
 //			
 //		}
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		convertView = (RelativeLayout) inflater.inflate(R.layout.list_view_item, parent, false);
 		Data entry = (Data) getItem(position);

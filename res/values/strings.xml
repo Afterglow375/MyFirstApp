@@ -12,5 +12,7 @@
     <string name="name">Assignment Name: </string>
     <string name="grade">Grade: </string>
     <string name="weight">Weight: </string>
+    <string name="save">Save </string>  
+    <string name="delete">Delete </string>     
 
 </resources>

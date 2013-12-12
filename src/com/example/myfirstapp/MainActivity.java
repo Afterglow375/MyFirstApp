@@ -1,6 +1,7 @@
 package com.example.myfirstapp;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -15,8 +16,7 @@ public class MainActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		
-		new Data("alex", 14, 10);
-		new Data("peter", 100, 20);
+		//Intent intent = getIntent();
 		
 		setListAdapter(new CustomAdapter(this));
 //		final ListView listview = (ListView) findViewById(R.id.listView);
@@ -33,10 +33,14 @@ public class MainActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
  
-		//get selected items
+		//Get the selected entry
 		Data entry = (Data) getListAdapter().getItem(position);
-		Toast.makeText(this, entry.name, Toast.LENGTH_SHORT).show();
- 
+		Intent intent = new Intent(getBaseContext(), GradeActivity.class);
+		intent.putExtra("name", entry.name);
+		intent.putExtra("grade", entry.grade);
+		intent.putExtra("weight", entry.weight);		
+		startActivity(intent);
+		
 	}
 	
 
