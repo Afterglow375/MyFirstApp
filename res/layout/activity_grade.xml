@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="200dp"
+    android:layout_height="300dp"
     android:background="@drawable/list_view_gradient"
     android:padding="8dp"
     android:layout_gravity="center" > 
@@ -12,7 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/name"
         android:layout_below="@+id/grade"
-        android:padding="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="35dp"
         android:text="@string/weight"
         android:textColor="#000000"
         android:textSize="16sp" />
@@ -23,7 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/name"
         android:layout_below="@+id/name"
-        android:padding="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="35dp"
         android:text="@string/grade"
         android:textColor="#000000"
         android:textSize="16sp" />
@@ -34,7 +40,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:maxLines="1"
-        android:padding="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="25dp"
         android:text="@string/name"
         android:textColor="#000000"
         android:textSize="16sp" />
@@ -56,25 +65,34 @@
         android:layout_toLeftOf="@+id/delete"
         android:layout_alignParentBottom="true"
         android:src="@android:drawable/ic_menu_save" />
+    
+    <ImageButton
+        android:id="@+id/back"
+        android:contentDescription="@string/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/save"
+        android:layout_toLeftOf="@+id/save"
+        android:src="@android:drawable/ic_menu_revert" />
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/editWeight"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/name"
-        android:layout_toRightOf="@+id/name"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/weight"
+        android:layout_alignBottom="@+id/weight"
+        android:layout_alignRight="@+id/editGrade"
+        android:layout_toRightOf="@+id/weight"
         android:ems="10"
-        android:inputType="textPersonName" 
+        android:inputType="number"
         android:textColor="#000000"
-        android:textSize="16sp">
-
-        <requestFocus />
-    </EditText>
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/editGrade"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/grade"
         android:layout_alignBottom="@+id/grade"
         android:layout_alignRight="@+id/editName"
         android:layout_toRightOf="@+id/grade"
@@ -84,15 +102,19 @@
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/editWeight"
+        android:id="@+id/editName"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignRight="@+id/editGrade"
-        android:layout_alignTop="@+id/weight"
-        android:layout_toRightOf="@+id/weight"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        android:layout_alignRight="@+id/delete"
+        android:layout_toRightOf="@+id/name"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="textPersonName"
         android:textColor="#000000"
-        android:textSize="16sp" />
+        android:textSize="16sp" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

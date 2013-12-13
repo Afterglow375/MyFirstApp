@@ -3,6 +3,9 @@ package com.example.myfirstapp;
 import java.util.ArrayList;
 
 public class Data {
+	public static float totalWeight = 0;
+	public static float overallGrade = 0;
+	public static float[] gradeScale = {0, 60, 70, 80, 90};
 	public static ArrayList<Data> entries = new ArrayList<Data>();
 	public String name;
 	public float grade;
@@ -13,21 +16,73 @@ public class Data {
 		this.grade = grade;
 		this.weight = weight;
 		entries.add(this);
+		overallGrade += grade;
+		totalWeight += weight;
 	}
 	
-	public void removeEntry(int index) {
+	public static float getA() {
+		return gradeScale[4];
+	}
+
+	public static float getB() {
+		return gradeScale[3];
+	}
+	
+	public static float getC() {
+		return gradeScale[2];
+	}
+	
+	public static float getD() {
+		return gradeScale[1];
+	}
+	
+	public static float getF() {
+		return gradeScale[0];
+	}
+	
+	public static void editA(float grade) {
+		gradeScale[4] = grade;
+	}
+	
+	public static void editB(float grade) {
+		gradeScale[3] = grade;
+	}
+	
+	public static void editC(float grade) {
+		gradeScale[2] = grade;
+	}
+	
+	public static void editD(float grade) {
+		gradeScale[1] = grade;
+	}
+	
+	public static void editF(float grade) {
+		gradeScale[0] = grade;
+	}
+
+	public static float[] getGradeScale() {
+		return gradeScale;
+	}
+	
+	public static float getWeightSum() {
+		return totalWeight;
+	}
+	
+	public static void removeEntry(int index) {
 		entries.remove(index);
 	}
 	
-	public void editName(int index, String inName) {
+	public static void editName(int index, String inName) {
 		entries.get(index).name = inName;
 	}
 	
-	public void editGrade(int index, float inGrade) {
+	public static void editGrade(int index, float inGrade) {
+		overallGrade += inGrade - entries.get(index).grade;
 		entries.get(index).grade = inGrade;
 	}
 
-	public void editWeight(int index, float inWeight) {
+	public static void editWeight(int index, float inWeight) {
+		overallGrade += inWeight - entries.get(index).weight;
 		entries.get(index).weight = inWeight;
 	}
 }

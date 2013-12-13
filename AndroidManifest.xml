@@ -34,6 +34,14 @@
             android:name="com.example.myfirstapp.GradeActivity"
             android:label="@string/title_activity_grade" >
         </activity>
+        <activity
+            android:name="com.example.myfirstapp.GradeScaleActivity"
+            android:label="@string/title_activity_grade_scale" >
+        </activity>
+        <activity
+            android:name="com.example.myfirstapp.AddGradeActivity"
+            android:label="@string/title_activity_add_grade" >
+        </activity>
     </application>
 
 </manifest>
