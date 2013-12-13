@@ -39,12 +39,31 @@ public class AddGradeActivity extends Activity {
 			public void onClick(View v) {
 				// Update in memory
 				String name = editNameView.getText().toString();
-				float grade = Float.parseFloat(editGradeView.getText().toString());
-				float weight = Float.parseFloat(editWeightView.getText().toString());
-				new Data(name, grade, weight);
-					
-				setResult(RESULT_OK, returnIntent);
-				finish();
+				String grade = editGradeView.getText().toString();
+				String weight = editWeightView.getText().toString();
+				
+				if (name.equals("")) {
+            		Toast toast = Toast.makeText(getApplicationContext(), "You need to enter a name", Toast.LENGTH_SHORT);
+                	toast.show();
+            	}
+            	else if (grade.equals("")) {
+            		Toast toast = Toast.makeText(getApplicationContext(), "You need to enter a grade", Toast.LENGTH_SHORT);
+                	toast.show();
+            	}
+            	else if (weight.equals("")) {
+            		Toast toast = Toast.makeText(getApplicationContext(), "You need to enter a weight", Toast.LENGTH_SHORT);
+                	toast.show();
+            	}
+            	else if (Float.parseFloat(weight) + Data.totalWeight > 100) {
+            		Toast toast = Toast.makeText(getApplicationContext(), "Sum of weights is above 100!", Toast.LENGTH_SHORT);
+                	toast.show();
+            	}
+            	else {
+					new Data(name, Float.parseFloat(grade), Float.parseFloat(weight));
+						
+					setResult(RESULT_OK, returnIntent);
+					finish();
+            	}
 			}
 		});
 	}

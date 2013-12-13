@@ -21,28 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignTop="@+id/editGradeScale"
-            android:layout_marginRight="18dp"
             android:layout_toLeftOf="@+id/editGradeScale"
             android:src="@android:drawable/ic_menu_add" />
-
-        <ImageButton
-            android:id="@+id/computeGrade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:contentDescription="@string/compute_grade"
-            android:src="@android:drawable/ic_menu_edit" />
-
-        <ImageButton
-            android:id="@+id/editGradeScale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="15dp"
-            android:layout_toLeftOf="@+id/computeGrade"
-            android:contentDescription="@string/gradescale"
-            android:src="@android:drawable/ic_menu_manage" />
 
         <TextView
             android:id="@+id/currentGrade"
@@ -54,8 +34,26 @@
             android:layout_toLeftOf="@+id/addGrade"
             android:gravity="center"
             android:layout_marginLeft="20dp"
-            android:padding="5dp"
             android:text="@string/curr_grade"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/editGradeScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/computeGrade"
+            android:contentDescription="@string/gradescale"
+            android:src="@android:drawable/ic_menu_manage" />
+
+        <ImageButton
+            android:id="@+id/computeGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/compute_grade"
+            android:src="@android:drawable/ic_menu_edit" />
 
 </RelativeLayout>

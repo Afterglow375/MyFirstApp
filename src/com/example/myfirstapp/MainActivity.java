@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	private CustomAdapter adapter;
 	private static final int EDIT_GRADE = 0;
 	private static final int ADD_GRADE = 1;
+	private char letterGrade;
+	private float numberGrade;
 	private final Context context = this;
 
 	@Override
@@ -24,18 +27,22 @@ public class MainActivity extends ListActivity {
 		
 		adapter = new CustomAdapter(this);
 		
-		new Data("Quiz #1", 14, 10);
-		new Data("Quiz #2", 12, 9);
-		new Data("Quiz #3", 12, 9);
-		new Data("Quiz #4", 11, 9);
-		new Data("Quiz #5", 12, 9);
-		new Data("Quiz #6", 120, 9);
-		new Data("Quiz #7", 12, 9);
+		new Data("Quiz #1", 15, 10);
+		new Data("Quiz #2", 20, 10);
+		new Data("Quiz #3", 10, 10);
+		new Data("Quiz #4", 10, 10);
+		new Data("Quiz #5", 10, 10);
+		new Data("Quiz #6", 120, 10);
+		new Data("Quiz #7", 10, 10);
 		
 		setListAdapter(adapter);
 		
 		TextView finalGrade = (TextView) findViewById(R.id.currentGrade);
-		finalGrade.setText(Float.toString(Data.getCurrentGrade()) + "%");
+		letterGrade = Data.getLetterGrade();
+		numberGrade = Data.getNumberGrade();
+		finalGrade.setText(letterGrade + ": " + Float.toString(numberGrade) + "%");
+		
+		Toast.makeText(getApplicationContext(), Float.toString(Data.getNumberGrade()), Toast.LENGTH_SHORT).show();
 		
 		final ImageButton editGradeScale = (ImageButton) findViewById(R.id.editGradeScale);
 		final ImageButton computeGrade = (ImageButton) findViewById(R.id.computeGrade);
@@ -60,7 +67,10 @@ public class MainActivity extends ListActivity {
 		// Compute grade button
 		computeGrade.setOnClickListener(new View.OnClickListener() { 
 			public void onClick(View v) {
-            	
+				Intent intent = new Intent(context, ComputeGrade.class);
+				intent.putExtra("letterGrade", letterGrade);
+				intent.putExtra("numberGrade", numberGrade);
+				startActivity(intent);
             }
 		});
 		

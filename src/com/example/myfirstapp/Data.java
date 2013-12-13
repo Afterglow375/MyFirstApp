@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Data {
@@ -16,12 +17,36 @@ public class Data {
 		this.grade = grade;
 		this.weight = weight;
 		entries.add(this);
-		overallGrade += grade;
+		overallGrade += grade*weight;
 		totalWeight += weight;
 	}
 	
-	public static float getCurrentGrade() {
-		return overallGrade / entries.size();
+	public static float getNumberGrade() {
+		//return (overallGrade / totalWeight);
+        BigDecimal grade = new BigDecimal(Float.toString(overallGrade / totalWeight));
+        grade = grade.setScale(2, BigDecimal.ROUND_HALF_UP);
+		return grade.floatValue();
+	}
+
+	public static char getLetterGrade() {
+        float grade = getNumberGrade();
+        char letterGrade;
+        if (grade > gradeScale[4]) {
+        	letterGrade = 'A';
+        }
+        else if (grade > gradeScale[3]) {
+        	letterGrade = 'B';
+        }
+        else if (grade > gradeScale[2]) {
+        	letterGrade = 'C';
+        }
+        else if (grade > gradeScale[1]) {
+        	letterGrade = 'D';
+        }
+        else {
+        	letterGrade = 'F';
+        }
+		return letterGrade;
 	}
 	
 	public static float getA() {

@@ -29,5 +29,6 @@
     <string name="hintName">Name </string>
     <string name="hintGrade">Grade</string>
     <string name="hintWeight">Weight</string>
+    <string name="title_activity_compute_grade">Compute a desired grade.</string>
 
 </resources>

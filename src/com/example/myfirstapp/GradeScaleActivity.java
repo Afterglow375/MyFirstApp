@@ -18,7 +18,7 @@ public class GradeScaleActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.grade_scale);
+		setContentView(R.layout.activity_grade_scale);
 		
 		final ImageButton save = (ImageButton) findViewById(R.id.save);
 		final ImageButton back = (ImageButton) findViewById(R.id.back);
@@ -45,14 +45,26 @@ public class GradeScaleActivity extends Activity {
 		save.setOnClickListener(new View.OnClickListener() { 
 			public void onClick(View v) {
 				// Update in memory
-				Data.editA(Float.parseFloat(editA.getText().toString()));
-				Data.editB(Float.parseFloat(editB.getText().toString()));
-				Data.editC(Float.parseFloat(editC.getText().toString()));
-				Data.editD(Float.parseFloat(editD.getText().toString()));
-				Data.editF(Float.parseFloat(editF.getText().toString()));
-					
-				Toast toast = Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_SHORT);
-				toast.show();
+				float a = Float.parseFloat(editA.getText().toString());
+				float b = Float.parseFloat(editB.getText().toString());
+				float c = Float.parseFloat(editC.getText().toString());
+				float d = Float.parseFloat(editD.getText().toString());
+				float f = Float.parseFloat(editF.getText().toString());
+				
+				// Check for bad input
+				if (a > 100) 
+					Toast.makeText(getApplicationContext(), "All grades must be below 100!", Toast.LENGTH_SHORT).show();
+				else if (b >= a || c >= a || d >= a || f >= a || c >= b || d >= b || f >= b || d >= c || f >= c || f >= d) {
+					Toast.makeText(getApplicationContext(), "Invalid grade scale.", Toast.LENGTH_SHORT).show();
+				}
+				else { // Save if good input
+					Data.editA(a);
+					Data.editB(b);
+					Data.editC(c);
+					Data.editD(d);
+					Data.editF(f);
+					Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 	}

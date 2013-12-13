@@ -23,7 +23,7 @@ public class EditGradeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_grade);
+		setContentView(R.layout.activity_edit_grade);
 		Intent intent = getIntent();
 		
 		editNameView = (EditText) findViewById(R.id.editName);

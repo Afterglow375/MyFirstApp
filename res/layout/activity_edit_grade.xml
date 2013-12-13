@@ -84,7 +84,7 @@
         android:layout_alignRight="@+id/editGrade"
         android:layout_toRightOf="@+id/weight"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         android:textColor="#000000"
         android:textSize="16sp" />
 
@@ -97,7 +97,7 @@
         android:layout_alignRight="@+id/editName"
         android:layout_toRightOf="@+id/grade"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         android:textColor="#000000"
         android:textSize="16sp" />
 
