@@ -20,6 +20,10 @@ public class Data {
 		totalWeight += weight;
 	}
 	
+	public static float getCurrentGrade() {
+		return overallGrade / entries.size();
+	}
+	
 	public static float getA() {
 		return gradeScale[4];
 	}

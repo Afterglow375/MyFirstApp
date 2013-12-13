@@ -8,11 +8,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends ListActivity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	private CustomAdapter adapter;
 	private static final int EDIT_GRADE = 0;
+	private static final int ADD_GRADE = 1;
 	private final Context context = this;
 
 	@Override
@@ -32,9 +34,20 @@ public class MainActivity extends ListActivity {
 		
 		setListAdapter(adapter);
 		
+		TextView finalGrade = (TextView) findViewById(R.id.currentGrade);
+		finalGrade.setText(Float.toString(Data.getCurrentGrade()) + "%");
+		
 		final ImageButton editGradeScale = (ImageButton) findViewById(R.id.editGradeScale);
 		final ImageButton computeGrade = (ImageButton) findViewById(R.id.computeGrade);
 		final ImageButton addGrade = (ImageButton) findViewById(R.id.addGrade);
+		
+		// Add grade button
+		addGrade.setOnClickListener(new View.OnClickListener() { 
+			public void onClick(View v) {
+				Intent myIntent = new Intent(context, AddGradeActivity.class);
+				startActivity(myIntent);
+            }
+		});	
 		
 		// Edit grade scale
 		editGradeScale.setOnClickListener(new View.OnClickListener() { 
@@ -51,12 +64,7 @@ public class MainActivity extends ListActivity {
             }
 		});
 		
-		// Add grade button
-		addGrade.setOnClickListener(new View.OnClickListener() { 
-			public void onClick(View v) {
-            	
-            }
-		});		
+	
 	}
 
 	@Override
@@ -71,7 +79,7 @@ public class MainActivity extends ListActivity {
  
 		//Get the selected entry
 		Data entry = (Data) getListAdapter().getItem(position);
-		Intent intent = new Intent(getBaseContext(), GradeActivity.class);
+		Intent intent = new Intent(getBaseContext(), EditGradeActivity.class);
 		intent.putExtra("name", entry.name);
 		intent.putExtra("grade", entry.grade);
 		intent.putExtra("weight", entry.weight);
@@ -82,6 +90,11 @@ public class MainActivity extends ListActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == EDIT_GRADE) {
+			if (resultCode == RESULT_OK) {
+				adapter.notifyDataSetChanged();
+			}
+		}
+		else if (resultCode == ADD_GRADE) {
 			if (resultCode == RESULT_OK) {
 				adapter.notifyDataSetChanged();
 			}

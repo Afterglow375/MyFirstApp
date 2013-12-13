@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:background="@drawable/list_view_gradient"
+    android:padding="8dp" >
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/grade"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="35dp"
+        android:text="@string/weight"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="35dp"
+        android:text="@string/grade"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:maxLines="1"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="25dp"
+        android:text="@string/name"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/weight"
+        android:layout_alignBottom="@+id/weight"
+        android:layout_alignRight="@+id/editGrade"
+        android:layout_toRightOf="@+id/weight"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:hint="@string/hintWeight" />
+
+    <EditText
+        android:id="@+id/editGrade"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/grade"
+        android:layout_alignBottom="@+id/grade"
+        android:layout_alignRight="@+id/editName"
+        android:layout_toRightOf="@+id/grade"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:hint="@string/hintGrade" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        android:layout_toRightOf="@+id/name"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:hint="@string/hintName" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/editWeight"
+        android:contentDescription="@string/save"
+        android:src="@android:drawable/ic_menu_add" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/save"
+        android:layout_toLeftOf="@+id/save"
+        android:contentDescription="@string/back"
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+</RelativeLayout>

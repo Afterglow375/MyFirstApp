@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class GradeActivity extends Activity {
+public class EditGradeActivity extends Activity {
 	private EditText editNameView;
 	private EditText editGradeView;
 	private EditText editWeightView;

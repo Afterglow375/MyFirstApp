@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
+    android:background="@drawable/list_view_gradient"
+    android:padding="8dp" >
+
+    <TextView
+        android:id="@+id/a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="25dp"
+        android:text="@string/a"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="35dp"
+        android:text="@string/b"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/b"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="35dp"
+        android:text="@string/c"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/d"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="35dp"
+        android:text="@string/f"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edita"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/a"
+        android:layout_alignBottom="@+id/a"
+        android:layout_toRightOf="@+id/a"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp" >
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editd"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/d"
+        android:layout_alignBottom="@+id/d"
+        android:layout_alignLeft="@+id/edita"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/save"
+        android:layout_toLeftOf="@+id/save"
+        android:contentDescription="@string/back"
+        android:src="@android:drawable/ic_menu_revert" />
+
+    <TextView
+        android:id="@+id/d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editc"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="35dp"
+        android:text="@string/d"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editc"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/c"
+        android:layout_alignBottom="@+id/c"
+        android:layout_alignLeft="@+id/editd"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editf"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/f"
+        android:layout_alignBottom="@+id/f"
+        android:layout_alignLeft="@+id/editd"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editb"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/b"
+        android:layout_alignBottom="@+id/b"
+        android:layout_alignLeft="@+id/edita"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/editf"
+        android:contentDescription="@string/save"
+        android:src="@android:drawable/ic_menu_save" />
+
+</RelativeLayout>

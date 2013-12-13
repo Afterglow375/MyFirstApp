@@ -31,7 +31,7 @@
                 android:value="com.example.myfirstapp.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.myfirstapp.GradeActivity"
+            android:name="com.example.myfirstapp.EditGradeActivity"
             android:label="@string/title_activity_grade" >
         </activity>
         <activity
