@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -21,7 +22,14 @@ public class Data {
 		totalWeight += weight;
 	}
 	
+	public static boolean isEmpty() {
+		return entries.isEmpty();
+	}
+	
 	public static float getNumberGrade() {
+		if (totalWeight == 0) {
+			return 0;
+		}
 		//return (overallGrade / totalWeight);
         BigDecimal grade = new BigDecimal(Float.toString(overallGrade / totalWeight));
         grade = grade.setScale(2, BigDecimal.ROUND_HALF_UP);
@@ -97,21 +105,32 @@ public class Data {
 		return totalWeight;
 	}
 	
+	public static float getOverallGrade() {
+		return overallGrade;
+	}
+	
 	public static void removeEntry(int index) {
+		Data entry = entries.get(index);
+		overallGrade -= entry.grade*entry.weight;
+		totalWeight -= entry.weight;
 		entries.remove(index);
+	}
+	
+	public static int getSize() {
+		return entries.size();
+	}
+	
+	public static Data getEntry(int index) {
+		return entries.get(index);
 	}
 	
 	public static void editName(int index, String inName) {
 		entries.get(index).name = inName;
 	}
 	
-	public static void editGrade(int index, float inGrade) {
-		overallGrade += inGrade - entries.get(index).grade;
+	public static void editWeightGrade(int index, float inGrade, float inWeight) {
+		overallGrade += inGrade*inWeight - entries.get(index).grade*entries.get(index).weight;
 		entries.get(index).grade = inGrade;
-	}
-
-	public static void editWeight(int index, float inWeight) {
-		overallGrade += inWeight - entries.get(index).weight;
 		entries.get(index).weight = inWeight;
 	}
 }

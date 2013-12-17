@@ -1,5 +1,9 @@
 package com.example.myfirstapp;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,22 +31,28 @@ public class MainActivity extends ListActivity {
 		
 		adapter = new CustomAdapter(this);
 		
-		new Data("Quiz #1", 15, 10);
-		new Data("Quiz #2", 20, 10);
-		new Data("Quiz #3", 10, 10);
-		new Data("Quiz #4", 10, 10);
-		new Data("Quiz #5", 10, 10);
-		new Data("Quiz #6", 120, 10);
-		new Data("Quiz #7", 10, 10);
+		File file = new File(getApplicationContext().getFilesDir(), "grades.dat");
+		try {
+			if (file.createNewFile()) {	// Creates new file
+				PrintStream writer = new PrintStream(file);
+				writer.println(Integer.toString(0));
+				writer.println(Float.toString(90));
+				writer.println(Float.toString(80));
+				writer.println(Float.toString(70));
+				writer.println(Float.toString(60));
+				writer.println(Float.toString(0));
+				writer.close();
+			}
+			else if (Data.isEmpty()) {
+				CustomAdapter.load(file);
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		setListAdapter(adapter);
-		
-		TextView finalGrade = (TextView) findViewById(R.id.currentGrade);
-		letterGrade = Data.getLetterGrade();
-		numberGrade = Data.getNumberGrade();
-		finalGrade.setText(letterGrade + ": " + Float.toString(numberGrade) + "%");
-		
-		Toast.makeText(getApplicationContext(), Float.toString(Data.getNumberGrade()), Toast.LENGTH_SHORT).show();
+		showGrade();
 		
 		final ImageButton editGradeScale = (ImageButton) findViewById(R.id.editGradeScale);
 		final ImageButton computeGrade = (ImageButton) findViewById(R.id.computeGrade);
@@ -52,7 +62,7 @@ public class MainActivity extends ListActivity {
 		addGrade.setOnClickListener(new View.OnClickListener() { 
 			public void onClick(View v) {
 				Intent myIntent = new Intent(context, AddGradeActivity.class);
-				startActivity(myIntent);
+				startActivityForResult(myIntent, ADD_GRADE);
             }
 		});	
 		
@@ -72,11 +82,9 @@ public class MainActivity extends ListActivity {
 				intent.putExtra("numberGrade", numberGrade);
 				startActivity(intent);
             }
-		});
-		
-	
+		});	
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -97,16 +105,32 @@ public class MainActivity extends ListActivity {
 		startActivityForResult(intent, EDIT_GRADE);
 	}	
 	
+	public void showGrade() {
+		TextView finalGrade = (TextView) findViewById(R.id.currentGrade);
+		letterGrade = Data.getLetterGrade();
+		numberGrade = Data.getNumberGrade();
+		finalGrade.setText(letterGrade + ": " + Float.toString(numberGrade) + "%");
+	}
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == EDIT_GRADE) {
+		if (requestCode == EDIT_GRADE) {
 			if (resultCode == RESULT_OK) {
 				adapter.notifyDataSetChanged();
+				Toast.makeText(getApplicationContext(), "Grade edited.", Toast.LENGTH_SHORT).show();
+				showGrade();
+			}
+			else if (resultCode == RESULT_CANCELED) {
+				adapter.notifyDataSetChanged();
+				Toast.makeText(getApplicationContext(), "Grade deleted.", Toast.LENGTH_SHORT).show();
+				showGrade();
 			}
 		}
-		else if (resultCode == ADD_GRADE) {
+		else if (requestCode == ADD_GRADE) {
 			if (resultCode == RESULT_OK) {
 				adapter.notifyDataSetChanged();
+				Toast.makeText(getApplicationContext(), "Grade added.", Toast.LENGTH_SHORT).show();
+				showGrade();
 			}
 		}
 	}

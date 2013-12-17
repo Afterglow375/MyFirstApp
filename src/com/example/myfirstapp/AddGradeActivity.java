@@ -36,31 +36,26 @@ public class AddGradeActivity extends Activity {
 				
 		// Save button
 		save.setOnClickListener(new View.OnClickListener() { 
-			public void onClick(View v) {
-				// Update in memory
+			public void onClick(View v) {				
 				String name = editNameView.getText().toString();
 				String grade = editGradeView.getText().toString();
 				String weight = editWeightView.getText().toString();
 				
 				if (name.equals("")) {
-            		Toast toast = Toast.makeText(getApplicationContext(), "You need to enter a name", Toast.LENGTH_SHORT);
-                	toast.show();
+            		Toast.makeText(getApplicationContext(), "You need to enter a name", Toast.LENGTH_SHORT).show();
             	}
             	else if (grade.equals("")) {
-            		Toast toast = Toast.makeText(getApplicationContext(), "You need to enter a grade", Toast.LENGTH_SHORT);
-                	toast.show();
+            		Toast.makeText(getApplicationContext(), "You need to enter a grade", Toast.LENGTH_SHORT).show();
             	}
             	else if (weight.equals("")) {
-            		Toast toast = Toast.makeText(getApplicationContext(), "You need to enter a weight", Toast.LENGTH_SHORT);
-                	toast.show();
+            		Toast.makeText(getApplicationContext(), "You need to enter a weight", Toast.LENGTH_SHORT).show();
             	}
             	else if (Float.parseFloat(weight) + Data.totalWeight > 100) {
-            		Toast toast = Toast.makeText(getApplicationContext(), "Sum of weights is above 100!", Toast.LENGTH_SHORT);
-                	toast.show();
+            		Toast.makeText(getApplicationContext(), "Sum of weights is above 100!", Toast.LENGTH_SHORT).show();
             	}
-            	else {
+            	else { // Update in memory
 					new Data(name, Float.parseFloat(grade), Float.parseFloat(weight));
-						
+					//Data.save(Data.getSize()-1);
 					setResult(RESULT_OK, returnIntent);
 					finish();
             	}

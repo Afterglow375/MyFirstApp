@@ -99,7 +99,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/editWeight"
         android:contentDescription="@string/save"
-        android:src="@android:drawable/ic_menu_add" />
+        android:src="@android:drawable/ic_menu_save" />
 
     <ImageButton
         android:id="@+id/back"
@@ -108,6 +108,6 @@
         android:layout_alignTop="@+id/save"
         android:layout_toLeftOf="@+id/save"
         android:contentDescription="@string/back"
-        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+        android:src="@android:drawable/ic_menu_revert" />
 
 </RelativeLayout>

@@ -18,7 +18,6 @@
     <string name="add_grade">Add a grade. </string>
     <string name="compute_grade">Compute a desired grade. </string>
     <string name="gradescale">Edit the grade scale. </string>
-    <string name="curr_grade">95% </string>
     <string name="title_activity_grade_scale">Edit the grade scale </string>
     <string name="a">A: </string>
     <string name="b">B: </string>
@@ -30,5 +29,8 @@
     <string name="hintGrade">Grade</string>
     <string name="hintWeight">Weight</string>
     <string name="title_activity_compute_grade">Compute a desired grade.</string>
+    <string name="curr_grade">Current grade: </string>
+    <string name="total_weight">Total Weight So Far: </string>
+    <string name="desired_grade">Enter a desired grade: </string>
 
 </resources>

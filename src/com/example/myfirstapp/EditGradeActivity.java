@@ -1,5 +1,9 @@
 package com.example.myfirstapp;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,6 +23,7 @@ public class EditGradeActivity extends Activity {
 	private int index;
 	private Intent returnIntent = new Intent();
 	private final Context context = this;
+	private int identifier = RESULT_FIRST_USER;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class EditGradeActivity extends Activity {
 		// Back button
 		back.setOnClickListener(new View.OnClickListener() { 
             public void onClick(View v) {
+            	setResult(identifier, returnIntent);
             	finish();
             }
         });
@@ -53,19 +59,15 @@ public class EditGradeActivity extends Activity {
             	float weight = Float.parseFloat(editWeightView.getText().toString());
             	
             	if (weight + Data.totalWeight > 100) {
-            		Toast toast = Toast.makeText(getApplicationContext(), "Sum of weights is above 100!", Toast.LENGTH_SHORT);
-                	toast.show();
+            		Toast.makeText(getApplicationContext(), "Sum of weights is above 100!", Toast.LENGTH_SHORT).show();
             	}
             	else {
 	            	// Update in memory
 	            	Data.editName(index, editNameView.getText().toString());
-	            	Data.editGrade(index, Float.parseFloat(editGradeView.getText().toString()));
-	            	Data.editWeight(index, Float.parseFloat(editWeightView.getText().toString()));            	
-	            	
-	            	setResult(RESULT_OK, returnIntent);
-	            	
-	            	Toast toast = Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_SHORT);
-	            	toast.show();
+	            	Data.editWeightGrade(index, Float.parseFloat(editGradeView.getText().toString()), 
+	            			Float.parseFloat(editWeightView.getText().toString()));            	         	
+	            	identifier = RESULT_OK;
+	            	Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_SHORT).show();
             	}
             }
         });
@@ -80,7 +82,7 @@ public class EditGradeActivity extends Activity {
             	alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             		public void onClick(DialogInterface dialog, int which) {
             			Data.removeEntry(index);
-            			setResult(RESULT_OK, returnIntent);
+            			setResult(RESULT_CANCELED, returnIntent);
             			finish();
             		}
             	});
@@ -95,7 +97,7 @@ public class EditGradeActivity extends Activity {
             }
         });
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
