@@ -44,7 +44,7 @@ public class GradeScaleActivity extends Activity {
 		// Save button
 		save.setOnClickListener(new View.OnClickListener() { 
 			public void onClick(View v) {
-				// Update in memory
+				
 				float a = Float.parseFloat(editA.getText().toString());
 				float b = Float.parseFloat(editB.getText().toString());
 				float c = Float.parseFloat(editC.getText().toString());
@@ -64,6 +64,7 @@ public class GradeScaleActivity extends Activity {
 					Data.editD(d);
 					Data.editF(f);
 					Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_SHORT).show();
+					CustomAdapter.save(); // Update in memory
 				}
 			}
 		});

@@ -2,7 +2,6 @@ package com.example.myfirstapp;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -41,7 +40,7 @@ public class AddGradeActivity extends Activity {
 				String grade = editGradeView.getText().toString();
 				String weight = editWeightView.getText().toString();
 				
-				if (name.equals("")) {
+				if (name.equals("")) { // Ensure proper input format
             		Toast.makeText(getApplicationContext(), "You need to enter a name", Toast.LENGTH_SHORT).show();
             	}
             	else if (grade.equals("")) {
@@ -50,13 +49,13 @@ public class AddGradeActivity extends Activity {
             	else if (weight.equals("")) {
             		Toast.makeText(getApplicationContext(), "You need to enter a weight", Toast.LENGTH_SHORT).show();
             	}
-            	else if (Float.parseFloat(weight) + Data.totalWeight > 100) {
+            	else if (Float.parseFloat(weight) + Data.getWeightSum() > 100) {
             		Toast.makeText(getApplicationContext(), "Sum of weights is above 100!", Toast.LENGTH_SHORT).show();
             	}
             	else { // Update in memory
 					new Data(name, Float.parseFloat(grade), Float.parseFloat(weight));
-					//Data.save(Data.getSize()-1);
 					setResult(RESULT_OK, returnIntent);
+					CustomAdapter.save();
 					finish();
             	}
 			}

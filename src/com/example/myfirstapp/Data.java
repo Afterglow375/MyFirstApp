@@ -1,19 +1,18 @@
 package com.example.myfirstapp;
 
-import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Data {
-	public static float totalWeight = 0;
-	public static float overallGrade = 0;
-	public static float[] gradeScale = {0, 60, 70, 80, 90};
-	public static ArrayList<Data> entries = new ArrayList<Data>();
+	private static float totalWeight = 0;
+	private static float overallGrade = 0;
+	private static float[] gradeScale = {0, 60, 70, 80, 90};
+	private static ArrayList<Data> entries = new ArrayList<Data>();
 	public String name;
 	public float grade;
 	public float weight;
 	
-	public Data(String name, float grade, float weight) {
+	public Data(String name, float grade, float weight) { // Store name, grade, and weight of each grade
 		this.name = name;
 		this.grade = grade;
 		this.weight = weight;
@@ -30,7 +29,6 @@ public class Data {
 		if (totalWeight == 0) {
 			return 0;
 		}
-		//return (overallGrade / totalWeight);
         BigDecimal grade = new BigDecimal(Float.toString(overallGrade / totalWeight));
         grade = grade.setScale(2, BigDecimal.ROUND_HALF_UP);
 		return grade.floatValue();
@@ -122,6 +120,10 @@ public class Data {
 	
 	public static Data getEntry(int index) {
 		return entries.get(index);
+	}
+	
+	public static ArrayList<Data> getData() {
+		return entries;
 	}
 	
 	public static void editName(int index, String inName) {

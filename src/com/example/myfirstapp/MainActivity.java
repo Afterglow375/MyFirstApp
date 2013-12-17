@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
-	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	private CustomAdapter adapter;
 	private static final int EDIT_GRADE = 0;
 	private static final int ADD_GRADE = 1;
@@ -33,7 +32,8 @@ public class MainActivity extends ListActivity {
 		
 		File file = new File(getApplicationContext().getFilesDir(), "grades.dat");
 		try {
-			if (file.createNewFile()) {	// Creates new file
+			if (!file.isFile()) { // Creates new file
+				file.createNewFile();
 				PrintStream writer = new PrintStream(file);
 				writer.println(Integer.toString(0));
 				writer.println(Float.toString(90));
@@ -42,6 +42,7 @@ public class MainActivity extends ListActivity {
 				writer.println(Float.toString(60));
 				writer.println(Float.toString(0));
 				writer.close();
+				CustomAdapter.load(file);
 			}
 			else if (Data.isEmpty()) {
 				CustomAdapter.load(file);

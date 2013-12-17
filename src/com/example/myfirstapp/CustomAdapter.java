@@ -15,14 +15,15 @@ import android.widget.TextView;
 
 public class CustomAdapter extends ArrayAdapter<Data> {
 	private Context context;
+	private static File file;
 	
 	public CustomAdapter(Context context) {
-		super(context, R.layout.list_view_item, Data.entries);
+		super(context, R.layout.list_view_item, Data.getData());
 		this.context = context;
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent) { // Populate the ListView
 		View myView = convertView;
 		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -42,7 +43,8 @@ public class CustomAdapter extends ArrayAdapter<Data> {
 		return myView;
 	}
 	
-	public static void load(File file) {
+	public static void load(File inFile) { // Loading from internal memory
+		file = inFile;
 		try {
 			Scanner scanner = new Scanner(file);
 			int numLines = Integer.parseInt(scanner.nextLine());
@@ -69,7 +71,7 @@ public class CustomAdapter extends ArrayAdapter<Data> {
 		}
 	}
 	
-	public static void save(File file) {
+	public static void save() { // Saving to internal memory
 		try {
 			PrintStream ps = new PrintStream(file);
 			int numLines = Data.getSize();

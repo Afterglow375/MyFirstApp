@@ -1,9 +1,5 @@
 package com.example.myfirstapp;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -58,7 +54,7 @@ public class EditGradeActivity extends Activity {
             public void onClick(View v) {
             	float weight = Float.parseFloat(editWeightView.getText().toString());
             	
-            	if (weight + Data.totalWeight > 100) {
+            	if (weight + Data.getWeightSum() > 100) {
             		Toast.makeText(getApplicationContext(), "Sum of weights is above 100!", Toast.LENGTH_SHORT).show();
             	}
             	else {
@@ -68,6 +64,7 @@ public class EditGradeActivity extends Activity {
 	            			Float.parseFloat(editWeightView.getText().toString()));            	         	
 	            	identifier = RESULT_OK;
 	            	Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_SHORT).show();
+	            	CustomAdapter.save();
             	}
             }
         });
@@ -83,6 +80,7 @@ public class EditGradeActivity extends Activity {
             		public void onClick(DialogInterface dialog, int which) {
             			Data.removeEntry(index);
             			setResult(RESULT_CANCELED, returnIntent);
+            			CustomAdapter.save();
             			finish();
             		}
             	});

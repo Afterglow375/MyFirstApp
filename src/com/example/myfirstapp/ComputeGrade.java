@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,7 +18,6 @@ public class ComputeGrade extends Activity {
 	private TextView currGrade;
 	private TextView currWeight;
 	private EditText inputDesiredGrade;
-	private Intent returnIntent = new Intent();
 	private final Context context = this;
 	private float numberGrade;
 
@@ -38,7 +36,7 @@ public class ComputeGrade extends Activity {
 		char letterGrade = intent.getCharExtra("letterGrade", 'E');
 		numberGrade = intent.getFloatExtra("numberGrade", 0);
 		currGrade.setText(letterGrade + " - " + Float.toString(numberGrade) + "%");
-		currWeight.setText(Float.toString(Data.totalWeight));
+		currWeight.setText(Float.toString(Data.getWeightSum()));
 		
 		// Back button
 		back.setOnClickListener(new View.OnClickListener() { 
